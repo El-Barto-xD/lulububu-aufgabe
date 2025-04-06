@@ -1,0 +1,49 @@
+$breakpoint-mobile: 600px;
+.color-picker {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2em;
+
+  @media screen and (max-width: $breakpoint-mobile) {
+    grid-template-columns: 1fr;
+  }
+  
+  // Color Sliders
+  .color-picker__slider-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1em;
+
+    .color-picker__slider {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+
+      input {
+        border: none;
+        border-radius: 5px;
+        -webkit-appearance: none;
+        -moz-appearance: textfield;
+        font-size: 1em;
+        text-align: center;
+
+        &:hover {
+          outline: 1px solid;
+        }
+      }
+    }
+  }
+
+  
+  // Color Preview
+  .color-picker__preview {
+    min-height: 250px;
+    border: 1px solid currentColor;
+    border-radius: 10px;
+
+    @media screen and (max-width: $breakpoint-mobile) {
+      order: -1;
+    }
+  }
+}
