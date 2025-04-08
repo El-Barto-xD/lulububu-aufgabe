@@ -1,0 +1,158 @@
+@use '../../styles/base/variables';
+
+.color-picker {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2em;
+  row-gap: 1em;
+  margin-top: 10vh;
+
+  @media screen and (min-width:variables.$breakpoint-mobile) {
+    grid-template-columns: 2fr 200px;
+  }
+
+  // Color Sliders
+  .color-picker__slider-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1em;
+
+    .color-picker__slider {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+
+      .rc-slider {
+        .rc-slider-rail {
+          background-color: variables.$color-light-gray;
+        }
+
+        .rc-slider-track {
+          background-color: variables.$color-dark-gray;
+        }
+
+        .rc-slider-handle {
+          background-color: variables.$color-medium-gray;
+          opacity: 1;
+          border: none;
+        }
+      }
+
+      input {
+        border: none;
+        border-radius: variables.$border-radius-small;
+        -webkit-appearance: none;
+        -moz-appearance: textfield;
+        font-size: 1em;
+        text-align: center;
+
+        &:hover,
+        &:focus {
+          background-color: variables.$color-light-gray;
+        }
+      }
+    }
+  }
+
+
+  // Color Preview
+  .color-picker__preview {
+    width: 200px;
+    height: 200px;
+    outline: 1px solid variables.$color-light-gray;
+    border-radius: variables.$border-radius-small;
+
+    @media screen and (max-width: variables.$breakpoint-mobile) {
+      order: -1;
+    }
+  }
+
+  // Name Input & Submit Button
+  .color-picker__nameInput,
+  .color-picker__submit {
+    padding: 1em 0.5em;
+    border: none;
+    border-radius: variables.$border-radius-small;
+    font-size: 0.7em;
+    box-sizing: border-box;
+    color: currentColor;
+    background: variables.$color-light-gray;
+    transition: background 200ms;
+  }
+
+  // Submit Button
+  .color-picker__submit {
+    cursor: pointer;
+
+    svg {
+      margin-left: 0.4em;
+    }
+
+    &:hover {
+      background: variables.$color-medium-gray;
+    }
+
+    &--success {
+      background: variables.$color-success;
+    }
+  }
+
+  // History / Saved Objects
+  .color-picker__history {
+    margin-top: 1em;
+
+    h3 {
+      margin: 0;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      list-style: none;
+      font-size: 0.8em;
+
+      li {
+        display: flex;
+        justify-content: space-between;
+        gap: 1em;
+        align-items: center;
+        padding: 0.3em;
+        border-radius: variables.$border-radius-small;
+
+        .color-picker__color-details {
+          display: flex;
+          align-items: center;
+          gap: 1em;
+        }
+
+        &:nth-child(even) {
+          background: variables.$color-light-gray;
+        }
+
+        .color-picker__color-preview {
+          width: 50px;
+          height: 50px;
+          border-radius: variables.$border-radius-small;
+          outline: 1px solid variables.$color-light-gray;
+        }
+
+        .color-picker__color-delete {
+          border: none;
+          border-radius: variables.$border-radius-small;
+          padding: 1em 1.25em;
+          font-size: 0.8em;
+          background: none;
+          transition: background 200ms, color 200ms;
+          cursor: pointer;
+
+          &:hover {
+            color: #fff;
+            background: variables.$color-error;
+          }
+        }
+      }
+    }
+  }
+}
